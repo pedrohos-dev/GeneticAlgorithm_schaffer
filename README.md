@@ -19,8 +19,25 @@ Aplicar um Algoritmo Genético (AG) para maximizar a função de Schaffer f6 no 
 ## Linha do Tempo dos Parâmetros e Impacto
 
 ### Tamanho da população
-50 → 100  
+50 → 100 → 30
 Impacto: Aumenta diversidade e cobertura do espaço de busca
+1. Convergência Prematura 
+Com 100 indivíduos, após algumas gerações a população fica geneticamente homogênea muito rápido:
+
+Bons genes se replicam rapidamente
+Todos ficam parecidos (exploram pouco)
+Fica preso em um ótimo local, não o global
+Com 30, a convergência é mais lenta = mais exploração do espaço.
+
+2. Pressão de Seleção Mais Forte
+Pop. 30: Cada bom indivíduo é "mais importante" → seus genes se replicam mais
+Pop. 100: Bons indivíduos se "perdem" entre muitos mediocres → menos foco na exploração
+3. Mutação vs Tamanho Popular
+Seu código usa taxa fixa: mutation_rate = 0.15
+População 30  → 30 × 0.15 = ~4-5 mutações por geração (proporcionalmente mais!)
+População 100 → 100 × 0.15 = ~15 mutações por geração (diluído em mais indivíduos)
+
+Com população pequena, cada mutação tem impacto maior na diversidade.
 
 ### Forma de seleção
 Torneio (k=3) → Torneio (k=2)  
@@ -174,10 +191,16 @@ Melhor solução antes do elistimo:
 - y = -3.0632843608119704 
 - fitness = 0.9902840901224854
 
-Melhor solução encontrada:
+Melhor solução encontrada (pop = 100):
 - x = -0.013531286837763397
 - y = 0.009300271456026792
 - fitness = 0.9997301640075642
+
+Melhor solução encontrada (pop = 30):
+- x = 0.0001301937298556532
+- y = 0.007161680720015029
+- fitness = 0.9999486429549551
+
 
 Ótimo global da função:
 

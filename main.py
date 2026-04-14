@@ -7,8 +7,8 @@ from utils.video import generate_video
 # ==============================
 # Parâmetros do algoritmo
 # ==============================
-POP_SIZE = 100
-GENERATIONS = 300
+POP_SIZE = 30
+GENERATIONS = 100
 CROSSOVER_RATE = 0.8
 MUTATION_RATE = 0.15
 
