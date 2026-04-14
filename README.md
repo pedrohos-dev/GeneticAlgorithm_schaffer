@@ -125,7 +125,12 @@ Foi implementado um vídeo mostrando a evolução da população ao longo das ge
 
 ---
 
-## Resultado Final
+## Resultados
+
+Melhor solução antes do elistimo: 
+- x = 0.6829171794670232 
+- y = -3.0632843608119704 
+- fitness = 0.9902840901224854
 
 Melhor solução encontrada:
 - x = -0.013531286837763397
