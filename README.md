@@ -15,7 +15,49 @@ Aplicar um Algoritmo Genético (AG) para maximizar a função de Schaffer f6 no 
 - Gerações: 200
 - Taxa de mutação: 0.05
 
----
+
+## Linha do Tempo dos Parâmetros e Impacto
+
+### Tamanho da população
+50 → 100  
+Impacto: Aumenta diversidade e cobertura do espaço de busca
+
+### Forma de seleção
+Torneio (k=3) → Torneio (k=2)  
+Impacto: Reduz pressão seletiva e evita convergência prematura
+
+### Tipo de crossover
+Aritmético (sem alteração)  
+Impacto: Mantém combinação suave entre soluções
+
+### Função de fitness
+Schaffer f6 (sem alteração)  
+Impacto: Define corretamente o problema
+
+### Número de gerações
+200 → 300  
+Impacto: Permite maior refinamento
+
+### Taxa de crossover
+0.8 (sem alteração)  
+Impacto: Mantém boa exploração combinatória
+
+### Taxa de mutação
+0.05 → 0.1 → 0.15 → adaptativa  
+Impacto: Aumenta diversidade e melhora exploração
+
+### Tipo de mutação
+Gaussiana global → por gene → adaptativa  
+Impacto: Melhor controle da variação
+
+### Intensidade da mutação (σ)
+0.5 → 1 → 2 → adaptativa  
+Impacto: Permite escapar de ótimos locais e refinar no final
+
+### Elitismo
+Não utilizado → 1 indivíduo  
+Impacto: Garante preservação da melhor solução
+
 
 ## Problemas Identificados e Ajustes
 
