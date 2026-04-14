@@ -1,1 +1,152 @@
-# GeneticAlgorithm_schaffer
+# Relatório – Otimização da Função de Schaffer com Algoritmo Genético
+
+## Objetivo
+Aplicar um Algoritmo Genético (AG) para maximizar a função de Schaffer f6 no domínio [-10, 10], analisando seu comportamento e ajustando seus parâmetros para melhorar a convergência.
+
+---
+
+## Configuração Inicial
+
+- Representação: cromossomos reais (x, y)
+- Seleção: torneio (k = 3 inicialmente)
+- Crossover: aritmético
+- Mutação: gaussiana
+- População: 50 indivíduos
+- Gerações: 200
+- Taxa de mutação: 0.05
+
+---
+
+## Problemas Identificados e Ajustes
+
+### 1. Convergência Prematura
+
+**Problema:**  
+A população se tornava homogênea por volta da geração 10, com todos os indivíduos apresentando o mesmo fitness.
+
+**Ajustes realizados:**
+- Aumento da taxa de mutação:
+  - de 0.05 → 0.1 → 0.15  
+- Mutação por gene (x e y mutam separadamente)
+
+**Justificativa:**  
+A taxa inicial de 0.05 era insuficiente para manter diversidade. Com 0.15, o algoritmo conseguiu continuar explorando o espaço de busca.
+
+---
+
+### 2. Pressão Seletiva Elevada
+
+**Problema:**  
+A seleção por torneio com k = 3 favorecia excessivamente os melhores indivíduos.
+
+**Ajuste realizado:**
+- Redução de k:
+  - de 3 → 2
+
+**Justificativa:**  
+Reduzir k diminuiu a pressão seletiva, aumentando a diversidade da população.
+
+---
+
+### 3. Perda de Boas Soluções
+
+**Problema:**  
+Mesmo atingindo fitness próximo de 0.999, o algoritmo perdia essas soluções nas gerações seguintes, caindo para aproximadamente 0.990.
+
+**Ajuste realizado:**
+- Implementação de elitismo (preservação de 1 indivíduo)
+
+**Justificativa:**  
+Garantiu que o melhor indivíduo fosse mantido em todas as gerações.
+
+---
+
+### 4. Estagnação em Ótimo Local
+
+**Problema:**  
+Mesmo com elitismo, o algoritmo estabilizava em torno de fitness ≈ 0.9903.
+
+**Ajuste realizado:**
+- Aumento da intensidade da mutação:
+  - desvio padrão: de 0.5 → 1 → 2
+
+**Justificativa:**  
+Valores maiores permitiram "saltos" mais amplos no espaço de busca, possibilitando escapar de ótimos locais.
+
+---
+
+### 5. Ajuste Fino da Convergência
+
+**Problema:**  
+Mutação constante gerava oscilações próximas ao ótimo.
+
+**Ajuste realizado:**
+- Mutação adaptativa:
+  - taxa de mutação decrescente ao longo das gerações
+  - sigma decrescente (de 2 até próximo de 0)
+
+**Justificativa:**  
+- Início (gerações iniciais): maior exploração  
+- Final (gerações finais): refinamento da solução  
+
+---
+
+### 6. Aumento de Escala do Algoritmo
+
+**Ajustes realizados:**
+- População:
+  - de 50 → 100 indivíduos  
+- Gerações:
+  - de 200 → 300  
+
+**Justificativa:**  
+Mais indivíduos e mais gerações aumentam a cobertura do espaço de busca e permitem melhor refinamento da solução.
+
+---
+
+## Visualização
+
+Foi implementado um vídeo mostrando a evolução da população ao longo das gerações:
+
+- Cada geração apresenta:
+  - os indivíduos (pontos no plano x,y)
+  - as curvas de nível da função de Schaffer
+- Intervalo fixo: [-10, 10] para ambos os eixos
+
+**Melhorias visuais:**
+- uso de contourf (fundo com gradiente)
+- transparência nas curvas
+- controle de sobreposição com zorder
+- destaque do melhor indivíduo
+
+**Otimização do vídeo:**
+- redução para aproximadamente 100 frames
+- duração ajustada para cerca de 10 segundos
+
+---
+
+## Resultado Final
+
+Melhor solução encontrada:
+- x = -0.013531286837763397
+- y = 0.009300271456026792
+- fitness = 0.9997301640075642
+
+Ótimo global da função:
+
+- x = 0  
+- y = 0  
+- fitness = 1  
+
+---
+
+## Conclusão
+
+Os ajustes realizados permitiram:
+
+- evitar convergência prematura  
+- preservar soluções de alta qualidade por meio do elitismo  
+- escapar de ótimos locais com mutação mais intensa  
+- equilibrar exploração e refinamento com mutação adaptativa  
+
+O comportamento observado ao longo das gerações (crescimento inicial, estagnação e posterior melhoria) está de acordo com o esperado para algoritmos genéticos bem ajustados.
