@@ -58,9 +58,11 @@ def genetic_algorithm(pop_size, generations, crossover_rate, mutation_rate):
 
         # 8. Salva histórico do melhor fitness
         best = np.max(fitness)
+        worst = np.min(fitness)
+        average = np.average(fitness)
         best_history.append(best)
 
-        print(f"Geração {gen}; Fitness {best:.10f}")
+        print(f"Geração = {gen}; Melhor Fitness = {best:.10f}; Pior Fitness = {worst:.10f}; Media = {average:.10f}")
 
     # salva população final também (opcional, mas útil pro vídeo)
     pop_history.append(pop.copy())

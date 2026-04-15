@@ -11,7 +11,7 @@ Aplicar um Algoritmo Genético (AG) para maximizar a função de Schaffer f6 no 
 - Seleção: torneio (k = 3 inicialmente)
 - Crossover: aritmético
 - Mutação: gaussiana
-- População: 50 indivíduos
+- População: 50 indivíduos (inicialmente)
 - Gerações: 200
 - Taxa de mutação: 0.05
 
