@@ -161,6 +161,15 @@ Mutação constante gerava oscilações próximas ao ótimo.
 **Justificativa:**  
 Mais indivíduos e mais gerações aumentam a cobertura do espaço de busca e permitem melhor refinamento da solução.
 
+### 7. Degraus no gráfico Fitness x Gerações
+Os degraus ocorrem por três razões principais:
+
+1. Elitismo: O melhor fitness nunca piora, apenas se mantém ou melhora. Cada degrau representa uma nova solução melhor encontrada.
+
+2. Mutação Dinâmica: No início das gerações, a mutação é forte (σ=2), permitindo grandes saltos no espaço de busca e descobertas rápidas. No final, muta pouco, causando platô.
+
+3. População Pequena: Com 30 indivíduos, há menos "candidatos" para melhorar a solução a cada geração, criando padrão discreto em vez de suave.
+
 ---
 
 ## Visualização
